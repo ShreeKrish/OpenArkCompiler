@@ -17,32 +17,17 @@
 sudo apt-get -y install openjdk-8-jdk git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev ccache libgl1-mesa-dev libxml2-utils xsltproc unzip lib32z1-dev qemu g++-multilib gcc-multilib python3-paramiko python-paramiko python-jenkins python-requests python-xlwt libglib2.0-dev libpixman-1-dev linux-libc-dev:i386
 sudo apt-get -y install gcc-5-aarch64-linux-gnu g++-5-aarch64-linux-gnu
 ```
-  
 
-## 安装Clang编译器并完成配置（用于编译方舟编译器代码）
+Clang Llvm setup for OpenArkCompiler
 
-下载**clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-16.04**
-LLVM下载地址：http://releases.llvm.org/download.html#8.0.0
+Step 1 : Extract the clang tools into tools folder
+cd tools
+tar -xzf clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-16.04.tar.xz
 
-放置到`openarkcompiler/tools`目录，打开`openarkcompiler/build/config/BUILDCONFIG.gn`文件，将`GN_C_COMPILER`、`GN_CXX_COMPILER`和`GN_AR`三个变量配置为Clang编译器所在路径，例如：
+Step 2: Modify the CLANG_LLVM_HOME path in openarkcompiler/build/config/BUILDCONFIG.gn
+# Set clang tools directory
+CLANG_LLVM_HOME="${MAPLE_ROOT}/tools/clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-16.04"
 
-```
-GN_C_COMPILER = "${MAPLE_ROOT}/tools/clang_llvm-8.0.0-x86_64-linux-gnu-ubuntu-16.04/bin/clang"
-GN_CXX_COMPILER = "${MAPLE_ROOT}/tools/clang_llvm-8.0.0-x86_64-linux-gnu-ubuntu-16.04/bin/clang++"
-GN_AR = "${MAPLE_ROOT}/tools/clang_llvm-8.0.0-x86_64-linux-gnu-ubuntu-16.04/bin/llvm-ar"
-```
+For higher versions of Ubuntu, download appropriate version of clang_llvm from
+http://releases.llvm.org/download.html#8.0.0
 
-其中${MAPLE_ROOT}为openarkcompiler源码根目录。
-
-## 安装Ninja、GN 并完成配置
-
-下载**Ninja(v1.9.0)**及**GN(Linux Version)**
-Ninja下载地址：https://github.com/ninja-build/ninja/releases
-GN下载地址：https://archive.softwareheritage.org/browse/content/sha1_git:2dc0d5b26caef44f467de8120b26f8aad8b878be/raw/?filename=gn
-
-将GN和Ninja可执行程序放置到openarkcompiler/tools目录，打开openarkcompiler/Makefile文件，将GN和NINJA两个变量配置为GN和Ninja可执行程序所在路径。例如：
-
-```
-GN := ${MAPLE_ROOT}/tools/gn/gn
-NINJA := ${MAPLE_ROOT}/tools/ninja_1.9.0/ninja
-```

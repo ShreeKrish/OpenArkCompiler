@@ -6,8 +6,8 @@ INSTALL_DIR := ${MAPLE_ROOT}/out
 BUILD_TYPE := RELEASE
 HOST_ARCH := 64
 MIR_JAVA := 1
-GN := ${MAPLE_ROOT}/tools/gn/gn
-NINJA := ${MAPLE_ROOT}/tools/ninja_1.9.0/ninja
+GN := ${MAPLE_ROOT}/tools/gn
+NINJA := ${MAPLE_ROOT}/tools/ninja
 
 GN_OPTIONS := \
   GN_INSTALL_PREFIX="$(MAPLE_ROOT)" \

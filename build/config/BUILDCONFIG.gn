@@ -29,10 +29,13 @@ GN_LIBRARY_OUTPUT_DIRECTORY = "${GN_INSTALL_PREFIX}/out/lib"
 # Put all built binary files under bin
 GN_BINARY_OUTPUT_DIRECTORY = "${GN_INSTALL_PREFIX}/out/bin"
 
+# Set clang tools directory
+CLANG_LLVM_HOME="${MAPLE_ROOT}/tools/clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-16.04"
+
 # Toolchain setup
-GN_C_COMPILER = "${MAPLE_ROOT}/tools/clang_llvm-8.0.0-x86_64-linux-gnu-ubuntu-16.04/bin/clang"
-GN_CXX_COMPILER = "${MAPLE_ROOT}/tools/clang_llvm-8.0.0-x86_64-linux-gnu-ubuntu-16.04/bin/clang++"
-GN_AR_COMPILER = "${MAPLE_ROOT}/tools/clang_llvm-8.0.0-x86_64-linux-gnu-ubuntu-16.04/bin/llvm-ar"
+GN_C_COMPILER = "${CLANG_LLVM_HOME}/bin/clang"
+GN_CXX_COMPILER = "${CLANG_LLVM_HOME}/bin/clang++"
+GN_AR_COMPILER = "${CLANG_LLVM_HOME}/bin/llvm-ar"
 target_toolchain = "//build/toolchain:clang"
 set_default_toolchain(target_toolchain)
 
