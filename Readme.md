@@ -4,7 +4,7 @@ This document contains Overview of Ark compiler & build instructions for buildin
 Along with the sample application building
 
 
-Introduction
+##Introduction
 -------------
 Ark compiler overview
 The Ark compiler is a unified programming platform designed to support the joint compilation and
@@ -13,13 +13,13 @@ components such as compilers, tool chains, and runtimes. The Ark compiler is sti
 will continue to implement these capabilities and open source.
 
 
-Setup & Build instructions for building the Ark compiler
+##Setup & Build instructions for building the Ark compiler
 ----------------------------------------------------------
 Build Instructions:
 -------------------
-Step 1 -> source build/envsetup.sh      // Setup clang and llvm paths
-Step 2 -> ./prebuilt.sh                 // Build the libjava-core utils
-Step 3 -> make                          // Compile the Ark compiler
+- Step 1 -> source build/envsetup.sh      // Setup clang and llvm paths
+- Step 2 -> ./prebuilt.sh                 // Build the libjava-core utils
+- Step 3 -> make                          // Compile the Ark compiler
 
 
 ## Overview
